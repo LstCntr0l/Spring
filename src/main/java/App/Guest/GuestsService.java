@@ -1,10 +1,11 @@
 package App.Guest;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface GuestsService {
     List<Guests> listAllGuests();
-    Guests getGuestById(Integer id);
+    Guests getGuestById(UUID id);
     Guests Add(Guests guests);
-    void delete(Integer id);
+    void delete(UUID id);
 }

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.UUID;
+
 @Controller
 public class GuestsController {
     private GuestsService guestsService;
@@ -30,14 +32,30 @@ public class GuestsController {
 
 
     @RequestMapping(value = "/guest", method = RequestMethod.POST)
-    public String guestADD(Guests guests) {
+    public String guestADD(AddGuestRequestDto request) {
+        Guests guests = new Guests(
+                UUID.randomUUID(),
+                request.imie,
+                request.nazwisko
+        );
+
         Guests savedGuests = guestsService.Add(guests);
         return "redirect:/guests";
     }
 
     @RequestMapping("/guest/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public String delete(@PathVariable UUID id) {
         guestsService.delete(id);
         return "redirect:/guests";
+    }
+}
+
+class AddGuestRequestDto {
+    public final String imie;
+    public final String nazwisko;
+
+    public AddGuestRequestDto(String imie, String nazwisko) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
     }
 }

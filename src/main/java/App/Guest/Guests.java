@@ -1,16 +1,28 @@
 package App.Guest;
 
 
+import java.util.UUID;
+
 public class Guests {
     private String imie;
     private String nazwisko;
-    private Integer id;
+    private UUID id; // UUID wygląda tak: 3e365e38-9e94-45c0-8444-0c141c44d595
+                     // nie-enumerowalny, unikalny identyfikator - możliwy do wygenerowania po stronie klienta
 
-    public Integer getId() {
+    public Guests() {
+    }
+
+    public Guests(UUID id, String imie, String nazwisko) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.id = id;
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
