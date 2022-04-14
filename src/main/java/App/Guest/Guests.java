@@ -6,6 +6,15 @@ public class Guests {
     private String nazwisko;
     private Integer id;
 
+    public Guests() {
+    }
+
+    public Guests(String imie, String nazwisko, Integer id) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }

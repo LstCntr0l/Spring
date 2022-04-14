@@ -3,10 +3,23 @@ package App.Guest;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class GuestsServiceImpl implements GuestsService {
-    private Map<Integer, Guests> guests;
+    // Nie powinniśmy reużywać identyfikatorów - lepiej utworzyć
+    // sekwencję, która będzie przydzielać co raz większe identyfikatory.
+    //
+    // Użyty typ AtomicInteger rozwiązuje problemy ze współbieżnym dostępem z
+    // wielu wątków jednocześnie (klasa GuestsServiceImpl to tzw. singleton, czyli
+    // istnieje jedna jej instancja, która będzie używana przez wiele wątków)
+    private final AtomicInteger guestsPrimaryKeyIndexSequence = new AtomicInteger(1);
+
+    // GuestServiceImpl to klasa współdzielona (singleton) przechwoująca stan (guests oraz sekwencja)
+    // dlatego musi być tzw. thread-safe - ;epiej korzystać z typów, które gwarantują synchronizację
+    // podczas próby modyfikacji/dostępu z wielu wątków
+    private final Map<Integer, Guests> guests = new ConcurrentHashMap<>();
 
     public GuestsServiceImpl() {
         loadGuests();
@@ -23,16 +36,20 @@ public class GuestsServiceImpl implements GuestsService {
     }
 
     @Override
-    public Guests Add(Guests guests) {
-        if(guests !=null){
-            if(guests.getId()==null){
-                guests.setId(getNextId());
-            }
-            this.guests.put(guests.getId(), guests);
-            return guests;
-        }else{
-            throw new RuntimeException("Nie");
-        }
+    public Guests Add(NewGuest newGuest) {
+        Objects.requireNonNull(newGuest);
+
+        int indexForNewGuest = guestsPrimaryKeyIndexSequence.getAndIncrement();
+
+        Guests createdGuest = new Guests(
+                newGuest.imie,
+                newGuest.nazwisko,
+                indexForNewGuest
+        );
+
+        this.guests.put(createdGuest.getId(), createdGuest);
+
+        return createdGuest;
     }
 
     @Override
@@ -40,28 +57,9 @@ public class GuestsServiceImpl implements GuestsService {
         guests.remove(id);
     }
 
-    private Integer getNextId() {
-        return Collections.max(guests.keySet())+1;
-    }
-
     private void loadGuests() {
-        guests = new HashMap<>();
-        Guests guests1 = new Guests();
-        guests1.setId(1);
-        guests1.setImie("Jan");
-        guests1.setNazwisko("Kowalski");
-        guests.put(1, guests1);
-
-        Guests guests2 = new Guests();
-        guests2.setId(2);
-        guests2.setImie("Mateusz");
-        guests2.setNazwisko("Nowak");
-        guests.put(2, guests2);
-
-        Guests guests3 = new Guests();
-        guests3.setId(3);
-        guests3.setImie("Anna");
-        guests3.setNazwisko("Nowacka");
-        guests.put(3, guests3);
+        Add(new NewGuest("Jan", "Kowalski"));
+        Add(new NewGuest("Mateusz", "Nowak"));
+        Add(new NewGuest("Anna", "Nowacka"));
     }
 }
