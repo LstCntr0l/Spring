@@ -1,0 +1,13 @@
+spring:
+  h2:
+    console:
+      enabled: true # w??cza przegl?dark? bazy: http://localhost:8080/h2-console
+  datasource:
+    url: jdbc:h2:file:~/.aplikacja-webowa/database.db;AUTO_SERVER=TRUE
+    username: sa # Mo?na zmieni?, ale chyba nieistotne
+    password: "" # Mo?na zmieni?, ale chyba nieistotne
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
