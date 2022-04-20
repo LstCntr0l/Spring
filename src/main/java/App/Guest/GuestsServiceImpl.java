@@ -35,8 +35,5 @@ public class GuestsServiceImpl implements GuestsService {
     }
 
     private void loadGuests() {
-        Add(new Guest("Jan", "Kowalski"));
-        Add(new Guest("Mateusz", "Nowak"));
-        Add(new Guest("Anna", "Nowacka"));
     }
 }

@@ -25,7 +25,7 @@ public class GuestsController {
         return "guests";
     }
 
-    @RequestMapping("/guest/add")
+    @RequestMapping("/guests/add")
     public String newGuest(Model model) {
         model.addAttribute("guest", new Guest());
         return "add";
@@ -43,7 +43,7 @@ public class GuestsController {
         return "redirect:/guests";
     }
 
-    @RequestMapping("/guest/delete/{id}")
+    @RequestMapping("/guests/delete/{id}")
     public String delete(@PathVariable UUID id) {
         guestsService.delete(id);
         return "redirect:/guests";
