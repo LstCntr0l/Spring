@@ -37,13 +37,11 @@
     <h1 class="font-italic" align="center"> Twoja lista gości jest pusta
         </br>
         Dodaj swojego pierwszego gościa
-        <a th:href="${'/guests/add'}"> tutaj</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Tutaj
+        </button>
     </h1>
-
     <img   src="/images/pleading.jpg" alt="" class="center">
-
-
-
 </div>
 
 
@@ -68,18 +66,19 @@
         </tbody>
     </table>
     <div style="text-align: center">
-    <a th:href="${'/guests/add'}" >Dodaj gościa</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Tutaj
+        </button>
     </div>
+
+    <!-- Button trigger modal -->
+
 </div>
 
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Tutaj
-</button>
-
 <!-- Modal -->
+<form th:object="${guest}" th:action="@{/guest}" method="post">
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -91,29 +90,25 @@
             </div>
             <div class="modal-body">
 
-                <!--
-                                <form th:object="${guest}" th:action="@{/guest}" method="post">
-                                    <div class="form-group">
-                                        <input type="hidden" th:field="*{id}"/>
-                                        <label>imie</label>
-                                        <input type="text" th:field="*{imie}" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>nazwisko</label>
-                                        <input type="text" th:field="*{nazwisko}" />
-                                    </div>
-                                </form>
--->
+                <div class="form-group">
+                    <label for="imie" class="col-form-label">Imie:</label>
+                    <input type="text" class="form-control" id="imie" name="imie" value="" />
+                </div>
+                <div class="form-group">
+                    <label for="nazwisko" class="col-form-label">Nazwisko:</label>
+                    <input type="text" class="form-control" id="nazwisko" name="nazwisko" value="" />
+                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                                <button type="submit" class="btn btn-primary">Dodaj</button>
+                                <input type="submit" class="btn btn-primary" value="Dodaj" />
                             </div>
 
                         </div>
                     </div>
-                </div>
 
+                </div>
+</form>
 
 
                 </body>
