@@ -25,12 +25,6 @@ public class GuestsController {
         return "guests";
     }
 
-    @RequestMapping("/guests/add")
-    public String newGuest(Model model) {
-        model.addAttribute("guest", new Guest());
-        return "add";
-    }
-
 
     @RequestMapping(value = "/guest", method = RequestMethod.POST)
     public String guestADD(AddGuestRequestDto request) {
