@@ -30,8 +30,8 @@ public class MoneyController {
     {
         Money cash=new Money(
                 request.nazwa,
-                request.KwotaDoZapłaty,
-                request.KwotaZapłacona
+                request.KwotaDoZaplaty,
+                request.KwotaZaplacona
         );
         Money savedMoney=moneyService.Add(cash);
         return "redirect:/Money";
@@ -46,12 +46,12 @@ public class MoneyController {
 
     class AddMoneyRequestDto {
     final String nazwa;
-    final String KwotaDoZapłaty;
-    final String KwotaZapłacona;
+    final String KwotaDoZaplaty;
+    final String KwotaZaplacona;
 
-        AddMoneyRequestDto(String nazwa, String kwotaDoZapłaty, String kwotaZapłacona) {
+        AddMoneyRequestDto(String nazwa, String KwotaDoZaplaty, String KwotaZaplacona) {
             this.nazwa = nazwa;
-            this.KwotaDoZapłaty = kwotaDoZapłaty;
-            this.KwotaZapłacona = kwotaZapłacona;
+            this.KwotaDoZaplaty = KwotaDoZaplaty;
+            this.KwotaZaplacona = KwotaZaplacona;
         }
     }

@@ -17,10 +17,10 @@ public class Money {
     String nazwa;
 
     @NotBlank
-    String KwotaDoZapłaty;
+    String KwotaDoZaplaty;
 
     @NotBlank
-    String KwotaZapłacona;
+    String KwotaZaplacona;
 
     @Version
     Long version;
@@ -28,10 +28,10 @@ public class Money {
     public Money(){
     }
 
-    public Money( String nazwa,  String kwotaDoZapłaty,  String kwotaZapłacona) {
+    public Money(String nazwa, String kwotaDoZaplaty, String kwotaZaplacona) {
         this.nazwa = nazwa;
-        this.KwotaDoZapłaty = kwotaDoZapłaty;
-        this.KwotaZapłacona = kwotaZapłacona;
+        this.KwotaDoZaplaty = kwotaDoZaplaty;
+        this.KwotaZaplacona = kwotaZaplacona;
     }
 
     public UUID getId() { return id; }
@@ -40,11 +40,11 @@ public class Money {
 
     public void setNazwa(String nazwa) { this.nazwa = nazwa; }
 
-    public String getKwotaDoZapłaty() { return KwotaDoZapłaty; }
+    public String getKwotaDoZaplaty() { return KwotaDoZaplaty; }
 
-    public void setKwotaDoZapłaty(String kwotaDoZapłaty) { KwotaDoZapłaty = kwotaDoZapłaty; }
+    public void setKwotaDoZaplaty(String kwotaDoZaplaty) { KwotaDoZaplaty = kwotaDoZaplaty; }
 
-    public String getKwotaZapłacona() { return KwotaZapłacona; }
+    public String getKwotaZaplacona() { return KwotaZaplacona; }
 
-    public void setKwotaZapłacona(String kwotaZapłacona) { KwotaZapłacona = kwotaZapłacona; }
+    public void setKwotaZaplacona(String kwotaZaplacona) { KwotaZaplacona = kwotaZaplacona; }
 }
