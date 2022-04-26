@@ -1,17 +1,13 @@
-var slideIndex = 1;
-showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+$(document).ready(function(){
+$('.table .eBtn ').on('click', function(event){
+event.preventDefault();
+var href = $(this).attr('href');
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
+$.get(href,function(cash,status)
+{
+$(' .myForm #update').val(cash.update)
+});
+$('myForm #exampleModalLabel').modal();
+});
+});

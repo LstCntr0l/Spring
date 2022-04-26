@@ -20,3 +20,53 @@ position: absolute;
 left:600px;
 top: 150px;
 }
+
+.body{
+height:1000px;
+}
+
+.dress{
+height:400px;
+}
+
+.dressPos1{
+position: absolute;
+left: 50px;
+top: 50px;
+
+}
+
+.dressPos2{
+position: absolute;
+left: 550px;
+top: -570px;
+
+}
+
+.dressPos3{
+position: absolute;
+left: 1050px;
+top: -1190px;
+
+}
+
+.dressPos4{
+position: absolute;
+left: 50px;
+top: -1100px;
+
+}
+
+.dressPos5{
+position: absolute;
+left: 550px;
+top: -1720px;
+
+}
+
+.dressPos6{
+position: absolute;
+left: 1050px;
+top: -2340px;
+
+}

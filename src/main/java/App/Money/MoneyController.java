@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.UUID;
 
@@ -14,26 +15,25 @@ public class MoneyController {
     private MoneyService moneyService;
 
 
-@Autowired
+    @Autowired
     public void setMoneyController(MoneyService moneyService) {
         this.moneyService = moneyService;
     }
 
     @RequestMapping("/Money")
-    public String listOfMoney(Model model){
-    model.addAttribute("Money", moneyService.ListAllMoney());
-    return "Money";
+    public String listOfMoney(Model model) {
+        model.addAttribute("Money", moneyService.ListAllMoney());
+        return "Money";
     }
 
     @RequestMapping(value = "/cash", method = RequestMethod.POST)
-    public String moneyADD(AddMoneyRequestDto request)
-    {
-        Money cash=new Money(
+    public String moneyADD(AddMoneyRequestDto request) {
+        Money cash = new Money(
                 request.nazwa,
                 request.KwotaDoZaplaty,
                 request.KwotaZaplacona
         );
-        Money savedMoney=moneyService.Add(cash);
+        Money savedMoney = moneyService.Add(cash);
         return "redirect:/Money";
     }
 
@@ -42,6 +42,8 @@ public class MoneyController {
         moneyService.delete(id);
         return "redirect:/Money";
     }
+
+
 }
 
     class AddMoneyRequestDto {
