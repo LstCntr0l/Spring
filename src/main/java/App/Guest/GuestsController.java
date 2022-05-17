@@ -30,7 +30,8 @@ public class GuestsController {
     public String guestADD(AddGuestRequestDto request) {
         Guest guest = new Guest(
                 request.imie,
-                request.nazwisko
+                request.nazwisko,
+                request.osobaTow
         );
 
         Guest savedGuests = guestsService.Add(guest);
@@ -47,9 +48,11 @@ public class GuestsController {
 class AddGuestRequestDto {
     final String imie;
     final String nazwisko;
+    final Boolean osobaTow;
 
-    AddGuestRequestDto(String imie, String nazwisko) {
+    AddGuestRequestDto(String imie, String nazwisko, Boolean osobaTow) {
         this.imie = imie;
         this.nazwisko = nazwisko;
+        this.osobaTow=osobaTow;
     }
 }

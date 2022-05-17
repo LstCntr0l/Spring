@@ -2,9 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Suknie Ślubne</title>
-    <script type="text/javascript" th:src="@{/css&js/javascript.js}"></script>
-    <link th:href="@{/css&js/main.css}" rel="stylesheet" type="text/css"/>
+    <title>Garnitury ślubne</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -43,6 +42,11 @@
                     Suknie Ślubne</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" th:href="@{/suits}">
+                    <img src="/images/suits-icon.jpg" width="30" height="30" alt="suits">
+                    Garnitury Ślubne</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" th:href="@{/schedule}">
                     <img src="/images/schedule.jpg" width="30" height="30" alt="schedule">
                     Harmonogram</a>
@@ -54,93 +58,96 @@
     </nav>
 </div>
 <h1 class="font-italic" align="center">
-    Suknie Ślubne
+    Garnitury Ślubne
 </h1>
 
 <div class="card dressPos1" style="width: 18rem;">
-    <img class="card-img-top dress" src="/images/1.jpg"  height="400px" alt="Card image cap">
+    <img class="card-img-top dress" src="/images/suit1.jpg"  height="400px" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">1 900,00 zł</h5>
+        <h5 class="card-title">1 100,00 zł</h5>
         <p class="card-text">
-            Suknia ślubna "Ann".</br>
-            Marka: Dream</br>
-            Rodzaj: księżniczka</br>
-            Dekolt: głęboki</br>
-            Zdobienia: cekiny</br>
-            Kolor: écru
+            Garnitur męski </br>
+            Marka: SUIT</br>
+            Kolor: czarny</br>
+            rodzaj: smoking</br>
+            Dodatki: muszka czarna</br>
+            koszula biała
         </p>
     </div>
 </div>
 
 <div class="card dressPos2" style="width: 18rem;">
-    <img class="card-img-top  dress" src="/images/2.jpg"  height="400px"alt="Card image cap">
+    <img class="card-img-top  dress" src="/images/suit2.jpg"  height="400px"alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">2 200,00 zł</h5>
+        <h5 class="card-title">1 400,00 zł</h5>
         <p class="card-text">
-            Suknia ślubna "Amelia"</br>
-            Marka: Mohito</br>
-            Rodzaj: Litera A</br>
-            Dekolt: w literę V</br>
-            Rękaw: na ramiączkach</br>
-            Kolor: ivory
+            Garnitur męski</br>
+            Marka: Mars</br>
+            Kolor: granatowy</br>
+            rodzaj: jednorzędowy</br>
+            Dodatki: muszka granatowa</br>
+            koszula biała
         </p>
     </div>
 </div>
 
 <div class="card dressPos3" style="width: 18rem;">
-    <img class="card-img-top dress" src="/images/3.png"height="400px" alt="Card image cap">
+    <img class="card-img-top dress" src="/images/suit3.jpg"height="400px" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">2 500,00 zł</h5>
+        <h5 class="card-title">1 600,00 zł</h5>
         <p class="card-text">
-            Suknia ślubna "Leyla"</br>
-            Marka: TylkoOna</br>
-            Rodzaj: rybka</br>
-            Dekolt: litera V</br>
-            Zdobienia: koronki</br>
-            Kolor: ivory</p>
+            Garnitur męski</br>
+            Marka: Egarnitur</br>
+            Kolor: szary</br>
+            rodzaj: dwurzędowy</br>
+            Dodatki: krawat niebieskie wzory</br>
+            koszula biała
+        </p>
     </div>
 </div>
 
 <div class="card dressPos4" style="width: 18rem;">
-    <img class="card-img-top dress" src="/images/4.png" height="400px" alt="Card image cap">
+    <img class="card-img-top dress" src="/images/suit4.png" height="400px" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">1 700,00 zł
+        <h5 class="card-title">2 100,00 zł
         </h5>
         <p class="card-text">
-            Suknia ślubna "Ellie"</br>
-            Marka: H&M</br>
-            Rodzaj: Boho</br>
-            Dekolt: głęboki</br>
-            Rękaw: z długimi rękawami</br>
-            kolor: czysta biel</p>
+            Garnitur męski</br>
+            Marka: VICTORSecret</br>
+            Kolor: czarny</br>
+            rodzaj: frak</br>
+            dodatki: kapelusz czarny</br>
+            muszka biała
+        </p>
     </div>
 </div>
 
 <div class="card dressPos5" style="width: 18rem;">
-    <img class="card-img-top dress" src="/images/5.png" height="400px" alt="Card image cap">
+    <img class="card-img-top dress" src="/images/suit5.jpg" height="400px" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">1 000,00 zł</h5>
+        <h5 class="card-title">2 500,00 zł</h5>
         <p class="card-text">
-            Suknia ślubna "Diana"</br>
-            Marka: Allie</br>
-            Rodzaj: syrenka</br>
-            Dekolt: litera V</br>
-            Zdobienia: koronki</br>
-            Kolor: szampańska biel</p>
+            Garnitur męski</br>
+            Marka: Malibu</br>
+            Kolor: czarny</br>
+            rodzaj: jednorzędowy</br>
+            dodatki: krawat czerwony</br>
+            koszula biała
+        </p>
     </div>
 </div>
 
 <div class="card dressPos6" style="width: 18rem;">
-    <img class="card-img-top dress" src="/images/6.jpeg" height="400px" alt="Card image cap">
+    <img class="card-img-top dress" src="/images/suit6.jpg" height="400px" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">1 600,00 zł</h5>
+        <h5 class="card-title">1 000,00 zł</h5>
         <p class="card-text">
-            Suknia ślubna "Laura"</br>
-            Marka: WeddingShop</br>
-            Rodzaj: Empire</br>
-            Dekolt: litera V</br>
-            Zdobienia: z długim trenem</br>
-            Kolor: écru</p>
+            Garnitur męski</br>
+            Marka: M&M</br>
+            Kolor: biały</br>
+            rodzaj: smoking</br>
+            dodatki: muszka czarna</br>
+            koszula biała</p>
     </div>
 </div>
 

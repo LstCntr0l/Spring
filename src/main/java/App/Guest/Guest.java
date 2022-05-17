@@ -22,12 +22,23 @@ public class Guest {
     @Version
     Long version;
 
+    Boolean osobaTow;
+
     public Guest() {
     }
 
-    public Guest(String imie, String nazwisko) {
+    public Guest(String imie, String nazwisko, Boolean osobaTow) {
         this.imie = imie;
         this.nazwisko = nazwisko;
+        this.osobaTow=osobaTow;
+    }
+
+    public Boolean getOsobaTow() {
+        return osobaTow;
+    }
+
+    public void setOsobaTow(Boolean osobaTow) {
+        this.osobaTow = osobaTow;
     }
 
     public UUID getId() {
