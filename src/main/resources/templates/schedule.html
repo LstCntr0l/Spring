@@ -75,7 +75,7 @@
             <div class="card-body">
                 <ul id="servicesSelection" class="list-group">
                     <li class="list-group-item list-group-item-danger">
-                        Ustalcie datę ślubu <input serviceName="DETERMINE_DATE_OF_WEDDING" value="${...}" id="..." type="checkbox" />
+                        Ustalcie datę ślubu
                     </li>
                     <li class="list-group-item list-group-item-danger">
                         Ustalcie budżet
@@ -98,22 +98,6 @@
                 </ul>
             </div>
         </div>
-        <script type="text/javascript">
-            $('#servicesSelection input[type='checkbox'])
-            .forEach((elem) => {
-                elem.change((oldValue, newValue) => {
-                    $.post({
-                        url: '/services',
-                        data: JSON.stringify({
-                            selectedService: elem.attr('serviceName')
-                        })
-                        .fail((e) => {
-                            // ...
-                        });
-                    });
-                });
-            });
-        </script>
     </div>
 
     <div class="card">
