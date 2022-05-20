@@ -61,6 +61,7 @@
 <h1 class="font-italic" align="center">
     Harmonogram
 </h1>
+
 <div id="accordion">
 
     <div class="card">
@@ -74,26 +75,8 @@
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
                 <ul id="servicesSelection" class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie datę ślubu
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie budżet
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Opracujcie wstępną listę gości
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zarezerwujcie salę weselną
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zarezerwujcie miejsce ślubu
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zarezerwujcie fotografa/kamerzystę
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zarezerwujcie zespół lub DJ
+                    <li class="list-group-item list-group-item-danger"  th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <= iterStat.size-29}">
+                        <th:block th:if="${schedule.tittle} eq '1'" th:text="${schedule.name}"></th:block>
                     </li>
                 </ul>
             </div>
@@ -111,20 +94,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Wybierzcie świadków
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zamówcie atrakcje weselne
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zapiszcie się na nauki przedmałżeńskie
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Rozpocznij poszukiwania sukni ślubnej/garnituru
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Wybierzcie fryzjera i wizażystę
+                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=11 and iterStat.index >=7}">
+                        <th:block th:if="${schedule.tittle} eq '2'" th:text="${schedule.name}"></th:block>
                     </li>
                 </ul>
             </div>
@@ -142,23 +113,8 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Złóżcie dokumenty w USC
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Wybierzcie ślubną papeterię
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Wybierzcie dekoracje kwiatowe
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zarezerwujcie auto do ślubu
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Kupcie obrączki ślubne
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zapiszcie się na kurs tańca
+                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=17 and iterStat.index >=12}">
+                        <th:block th:if="${schedule.tittle} eq '3'" th:text="${schedule.name}"></th:block>
                     </li>
                 </ul>
             </div>
@@ -176,21 +132,10 @@
         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Załatwiajcie formalności z księdzem
+                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=22 and iterStat.index >=18}">
+                        <th:block th:if="${schedule.tittle} eq '4'" th:text="${schedule.name}"></th:block>
                     </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zróbcie ostateczną listę gości
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zapraszajcie wszystkich gości z listy
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zaplanujcie upominki dla rodziców/gości/świadków
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Kupcie alkohol
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -207,27 +152,10 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie przebieg ceremonii zaślubin
+                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=28 and iterStat.index >=23}">
+                        <th:block th:if="${schedule.tittle} eq '5'" th:text="${schedule.name}"></th:block>
                     </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie menu weselne
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie plan rozsadzenia gości
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie szczegóły z fotografem/kamerzystą
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Ustalcie szczegóły z zespołem/DJ
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zweryfikujcie potwierdzenia przybycia gości
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Odbierzcie suknię/garnitur z salonu
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -244,18 +172,10 @@
         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Dostarczcie alkohol na salę
+                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=32 and iterStat.index >=29}">
+                        <th:block th:if="${schedule.tittle} eq '6'" th:text="${schedule.name}"></th:block>
                     </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Ułóżcie winietki
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Zapakujcie prezenty dla rodziców/gości/świadków
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Przygotujcie stroje i inne akcesoria
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -272,11 +192,9 @@
         <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger">
-                        Uregulujcie wszystkie należności
-                    </li>
-                    <li class="list-group-item list-group-item-danger">
-                        Załatwcie formalności
+                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index >= iterStat.size-2}">
+                        <th:block th:if="${schedule.tittle} eq '7'" th:text="${schedule.name}"></th:block>
+
                     </li>
                 </ul>
             </div>
