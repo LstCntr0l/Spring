@@ -64,162 +64,39 @@
 
 <div id="accordion">
 
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    18-12 miesięcy przed ślubem
-                </button>
-            </h5>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-                    <form method="post" th:action="@{/schedule/edit/}">
-                <ul id="servicesSelection" class="list-group">
-                    <li class="list-group-item list-group-item-success"  th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <= iterStat.size-29 } and ${schedule.done}">
-                        <th:block th:if="${schedule.tittle} eq '1'" th:text="${schedule.name}"></th:block>
+    <form method="post" th:action="@{/schedule}" th:object="${schedules}">
+        <div class="card" th:each="group, groupItemStat : ${schedules.groups}">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse"
+                            th:data-target="${'#' + group.collapseId}" aria-expanded="true" aria-controls="collapseOne">
+                        <th:block th:text="${group.title}"></th:block>
+                    </button>
+                </h5>
+            </div>
+            <div th:id="${group.collapseId}" class="collapse show" aria-labelledby="headingOne"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <ul id="servicesSelection" class="list-group">
+                        <li th:each="entry, entryItemStat : ${group.entries}"
+                            th:class="'list-group-item ' + ${entry.done ? 'list-group-item-success' : 'list-group-item-danger'}">
+                            <th:block th:text="${entry.name}"></th:block>
 
-                        <div class="form-check form-switch">
-                            <input type="checkbox" class="form-check-input "  id="doneTrue" name="doneTrue" th:checked="${schedule.done}"/>
-                            <label for="doneTrue" class="form-check-label">Zrobione</label>
-                        </div>
+                            <div class="form-check form-switch">
+                                <input type="hidden" th:field="*{groups[__${groupItemStat.index}__].entries[__${entryItemStat.index}__].id}" />
+                                <input type="checkbox" class="form-check-input " id="doneTrue" name="doneTrue"
+                                       th:field="*{groups[__${groupItemStat.index}__].entries[__${entryItemStat.index}__].done}"
+                                       th:checked="${entry.done}"/>
+                                <label for="doneTrue" class="form-check-label">Zrobione</label>
+                            </div>
 
-                    </li>
-
-                    <li class="list-group-item list-group-item-danger"  th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <= iterStat.size-29 } and ${!schedule.done}">
-                        <th:block th:if="${schedule.tittle} eq '1'" th:text="${schedule.name}"></th:block>
-
-                        <div class="form-check form-switch">
-                        <input type="checkbox" class="form-check-input "  id="done" name="done" th:checked="${schedule.done}"/>
-                        <label for="done" class="form-check-label">Zrobione</label>
-                        </div>
-
-                    </li>
-
-
-                </ul>
-                </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    11-7 miesięcy przed ślubem
-                </button>
-            </h5>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=11 and iterStat.index >=7}">
-                        <th:block th:if="${schedule.tittle} eq '2'" th:text="${schedule.name}"></th:block>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    6-4 miesięce przed ślubem
-                </button>
-            </h5>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=17 and iterStat.index >=12}">
-                        <th:block th:if="${schedule.tittle} eq '3'" th:text="${schedule.name}"></th:block>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingFour">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    3 miesiące przed ślubem
-                </button>
-            </h5>
-        </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=22 and iterStat.index >=18}">
-                        <th:block th:if="${schedule.tittle} eq '4'" th:text="${schedule.name}"></th:block>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingFive">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    2-1 miesiąc przed ślubem
-                </button>
-            </h5>
-        </div>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=28 and iterStat.index >=23}">
-                        <th:block th:if="${schedule.tittle} eq '5'" th:text="${schedule.name}"></th:block>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingSix">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                    1 dzień przed ślubem
-                </button>
-            </h5>
-        </div>
-        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <=32 and iterStat.index >=29}">
-                        <th:block th:if="${schedule.tittle} eq '6'" th:text="${schedule.name}"></th:block>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header" id="headingSeven">
-            <h5 class="mb-0">
-                <button class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                    Po ślubie
-                </button>
-            </h5>
-        </div>
-        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-danger" th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index >= iterStat.size-2}">
-                        <th:block th:if="${schedule.tittle} eq '7'" th:text="${schedule.name}"></th:block>
-
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <button type="submit">Zapisz</button>
+    </form>
 
 </div>
 </body>
