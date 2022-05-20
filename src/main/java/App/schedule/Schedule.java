@@ -3,7 +3,7 @@ package App.schedule;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+
 import java.util.UUID;
 
 @Entity
@@ -12,10 +12,8 @@ public class Schedule {
     @GeneratedValue
     UUID id;
 
-    @NotBlank
     String tittle;
 
-    @NotBlank
     String name;
 
     Boolean done;
@@ -23,7 +21,7 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(@NotBlank String tittle, @NotBlank String name, Boolean done) {
+    public Schedule( String tittle, String name, Boolean done) {
         this.tittle = tittle;
         this.name = name;
         this.done = done;

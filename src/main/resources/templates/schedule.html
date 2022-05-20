@@ -74,11 +74,31 @@
         </div>
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
+                    <form method="post" th:action="@{/schedule/edit/}">
                 <ul id="servicesSelection" class="list-group">
-                    <li class="list-group-item list-group-item-danger"  th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <= iterStat.size-29}">
+                    <li class="list-group-item list-group-item-success"  th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <= iterStat.size-29 } and ${schedule.done}">
                         <th:block th:if="${schedule.tittle} eq '1'" th:text="${schedule.name}"></th:block>
+
+                        <div class="form-check form-switch">
+                            <input type="checkbox" class="form-check-input "  id="doneTrue" name="doneTrue" th:checked="${schedule.done}"/>
+                            <label for="doneTrue" class="form-check-label">Zrobione</label>
+                        </div>
+
                     </li>
+
+                    <li class="list-group-item list-group-item-danger"  th:each="schedule,iterStat : ${schedule} " th:if="${iterStat.index <= iterStat.size-29 } and ${!schedule.done}">
+                        <th:block th:if="${schedule.tittle} eq '1'" th:text="${schedule.name}"></th:block>
+
+                        <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input "  id="done" name="done" th:checked="${schedule.done}"/>
+                        <label for="done" class="form-check-label">Zrobione</label>
+                        </div>
+
+                    </li>
+
+
                 </ul>
+                </form>
             </div>
         </div>
     </div>
@@ -202,6 +222,5 @@
     </div>
 
 </div>
-
 </body>
 </html>
