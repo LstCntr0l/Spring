@@ -27,6 +27,13 @@ public class Schedule {
         this.done = done;
     }
 
+    public Schedule(UUID id, String tittle, String name, Boolean done) {
+        this.id = id;
+        this.tittle = tittle;
+        this.name = name;
+        this.done = done;
+    }
+
     public UUID getId() {
         return id;
     }
