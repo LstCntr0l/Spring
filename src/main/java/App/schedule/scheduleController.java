@@ -24,8 +24,8 @@ public class scheduleController {
     private final ScheduleRepository scheduleRepository;
 
     public scheduleController(
-        ScheduleService scheduleService,
-        ScheduleRepository scheduleRepository
+            ScheduleService scheduleService,
+            ScheduleRepository scheduleRepository
     ) {
         this.scheduleService = scheduleService;
         this.scheduleRepository = scheduleRepository;
@@ -38,45 +38,35 @@ public class scheduleController {
         return "schedule";
     }
 
-    @RequestMapping(value = "/schedules", method = RequestMethod.POST)
-    public String insertSchedule(AddScheduleRequestDto request) {
-        Schedule schedule = new Schedule(
-            request.tittle,
-            request.name,
-            request.done
-        );
-        Schedule savedSchedules = scheduleService.Add(schedule);
-        return "redirect:/schedule";
-    }
-
     @PostMapping("/schedule")
     public String edit(@ModelAttribute Schedules schedules, BindingResult bindingResult, Model model) {
+
         List<Schedules.Schedule.Entry> updatedEntries = schedules.getGroups()
-            .stream()
-            .flatMap(it -> schedules.getGroups().stream())
-            .flatMap(it -> it.getEntries().stream())
-            .toList();
+                .stream()
+                .flatMap(it -> schedules.getGroups().stream())
+                .flatMap(it -> it.getEntries().stream())
+                .toList();
 
         Map<UUID, Schedule> existingEntires = updatedEntries.stream()
-            .map(Schedules.Schedule.Entry::getId)
-            .map(UUID::fromString)
-            .collect(Collectors.collectingAndThen(
-                Collectors.toList(),
-                scheduleRepository::findAllById
-            ))
-            .stream()
-            .collect(Collectors.toMap(Schedule::getId, Function.identity()));
+                .map(Schedules.Schedule.Entry::getId)
+                .map(UUID::fromString)
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        scheduleRepository::findAllById
+                ))
+                .stream()
+                .collect(Collectors.toMap(Schedule::getId, Function.identity()));
 
         List<Schedule> modifiedExistingEntries = updatedEntries.stream()
-            .map(updatedEntry -> {
-                Schedule existingEntry = Optional.ofNullable(existingEntires.get(UUID.fromString(updatedEntry.getId())))
-                    .orElseThrow(() -> new IllegalStateException(String.format("Schedule entry with id %s does not exist!", updatedEntry.getId())));
+                .map(updatedEntry -> {
+                    Schedule existingEntry = Optional.ofNullable(existingEntires.get(UUID.fromString(updatedEntry.getId())))
+                            .orElseThrow(() -> new IllegalStateException(String.format("Schedule entry with id %s does not exist!", updatedEntry.getId())));
 
-                existingEntry.setDone(updatedEntry.getDone());
+                    existingEntry.setDone(updatedEntry.getDone());
 
-                return existingEntry;
-            })
-            .toList();
+                    return existingEntry;
+                })
+                .toList();
 
         scheduleRepository.saveAll(modifiedExistingEntries);
 
@@ -85,51 +75,41 @@ public class scheduleController {
         return "schedule";
     }
 
+
     private Schedules getAllSchedules() {
         Map<String, List<Schedule>> groupedByTitle = scheduleService.listAllSchedules()
-            .stream()
-            .collect(Collectors.groupingBy(Schedule::getTittle));
+                .stream()
+                .collect(Collectors.groupingBy(Schedule::getTittle));
 
         Map<String, String> titleIdToTitle = Map.of(
-            "1", "18 - 12 miesięcy",
-            "2", "18 - 12 miesięcy",
-            "3", "18 - 12 miesięcy",
-            "4", "18 - 12 miesięcy",
-            "5", "18 - 12 miesięcy",
-            "6", "18 - 12 miesięcy",
-            "7", "18 - 12 miesięcy"
+                "1", "18 - 12 miesięcy przed ślubem",
+                "2", "11 - 7 miesięcy przed ślubem",
+                "3", "6 - 4 miesięce przed ślubem",
+                "4", "3 miesięce przed ślubem",
+                "5", "2 - 1 miesięc przed ślubem",
+                "6", "1 dzień przed ślubem ",
+                "7", "Po ślubie"
         );
 
         List<Schedules.Schedule> mappedSchedules = groupedByTitle.entrySet()
-            .stream()
-            .map(entry -> new Schedules.Schedule(
-                titleIdToTitle.get(entry.getKey()),
-                entry.getValue()
-                    .stream()
-                    .map(it -> new Schedules.Schedule.Entry(
-                        it.id.toString(),
-                        it.name,
-                        it.done
-                    ))
-                    .collect(Collectors.toCollection(ArrayList::new)),
-                UUID.randomUUID().toString()
-            ))
-            .collect(Collectors.toCollection(ArrayList::new));
+                .stream()
+                .map(entry -> new Schedules.Schedule(
+                        titleIdToTitle.get(entry.getKey()),
+                        entry.getValue()
+                                .stream()
+                                .map(it -> new Schedules.Schedule.Entry(
+                                        it.id.toString(),
+                                        it.name,
+                                        it.done
+                                ))
+                                .collect(Collectors.toCollection(ArrayList::new)),
+                        UUID.randomUUID().toString()
+                ))
+                .collect(Collectors.toCollection(ArrayList::new));
 
         Schedules value = new Schedules(mappedSchedules);
         return value;
     }
 }
 
-class AddScheduleRequestDto {
-    final String tittle;
-    final String name;
-    final Boolean done;
-
-    public AddScheduleRequestDto(String tittle, String name, Boolean done) {
-        this.tittle = tittle;
-        this.name = name;
-        this.done = done;
-    }
-}
 
