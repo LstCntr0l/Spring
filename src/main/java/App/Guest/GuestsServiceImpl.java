@@ -10,18 +10,11 @@ public class GuestsServiceImpl implements GuestsService {
 
     public GuestsServiceImpl(GuestRepository guestRepository) {
         this.guestRepository = guestRepository;
-
-        loadGuests();
     }
 
     @Override
     public List<Guest> listAllGuests() {
         return guestRepository.findAll();
-    }
-
-    @Override
-    public Guest getGuestById(UUID id) {
-        return guestRepository.getById(id);
     }
 
     @Override
@@ -34,6 +27,4 @@ public class GuestsServiceImpl implements GuestsService {
         guestRepository.deleteById(id);
     }
 
-    private void loadGuests() {
-    }
 }

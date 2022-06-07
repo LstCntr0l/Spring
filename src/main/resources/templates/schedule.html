@@ -22,34 +22,27 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/index}">
-                    <img src="/images/home.jpg" width="30" height="30" alt="home">
-                    home
-                </a>
+                    <img src="/images/home.jpg" width="30" height="30" alt="home">home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/guests}">
-                    <img src="/images/stick.jpg" width="30" height="30" alt="guests">
-                    Goście</a>
+                    <img src="/images/stick.jpg" width="30" height="30" alt="guests">Goście</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/Money}">
-                    <img src="/images/money.jpg" width="30" height="30" alt="money">
-                    Budżet</a>
+                    <img src="/images/money.jpg" width="30" height="30" alt="money">Budżet</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/dresses}">
-                    <img src="/images/dressicon.jpg" width="30" height="30" alt="dress">
-                    Suknie Ślubne</a>
+                    <img src="/images/dressicon.jpg" width="30" height="30" alt="dress">Suknie Ślubne</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/suits}">
-                    <img src="/images/suits-icon.jpg" width="30" height="30" alt="suits">
-                    Garnitury Ślubne</a>
+                    <img src="/images/suits-icon.jpg" width="30" height="30" alt="suits">Garnitury Ślubne</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/schedule}">
-                    <img src="/images/schedule.jpg" width="30" height="30" alt="schedule">
-                    Harmonogram</a>
+                    <img src="/images/schedule.jpg" width="30" height="30" alt="schedule">Harmonogram</a>
             </li>
         </ul>
         <span class="navbar-text">
@@ -63,7 +56,6 @@
 </h1>
 
 <div id="accordion">
-
     <form method="post" th:action="@{/schedule}" th:object="${schedules}">
         <div class="card" th:each="group, groupItemStat : ${schedules.groups}">
             <div class="card-header" id="headingOne">
@@ -81,21 +73,20 @@
                         <li th:each="entry, entryItemStat : ${group.entries}"
                             th:class="'list-group-item ' + ${entry.done ? 'list-group-item-success' : 'list-group-item-danger'}">
                             <th:block th:text="${entry.name}"></th:block>
-
                             <div class="form-check form-switch">
-                                <input type="hidden" th:field="*{groups[__${groupItemStat.index}__].entries[__${entryItemStat.index}__].id}" />
+                                <input type="hidden"
+                                       th:field="*{groups[__${groupItemStat.index}__].entries[__${entryItemStat.index}__].id}"/>
                                 <input type="checkbox" class="form-check-input " id="doneTrue" name="doneTrue"
                                        th:field="*{groups[__${groupItemStat.index}__].entries[__${entryItemStat.index}__].done}"
                                        th:checked="${entry.done}"/>
                                 <label for="doneTrue" class="form-check-label">Zrobione</label>
                             </div>
-
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-outline-success btn-lg btn-block" >Zapisz</button>
+        <button type="submit" class="btn btn-outline-success btn-lg btn-block">Zapisz</button>
     </form>
 
 </div>

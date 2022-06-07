@@ -25,7 +25,6 @@ public class GuestsController {
         return "guests";
     }
 
-
     @RequestMapping(value = "/guest", method = RequestMethod.POST)
     public String guestADD(AddGuestRequestDto request) {
         Guest guest = new Guest(

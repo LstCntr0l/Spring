@@ -22,9 +22,6 @@ public class Money {
     @NotBlank
     String KwotaZaplacona;
 
-    @Version
-    Long version;
-
     public Money(){
     }
 
@@ -37,14 +34,11 @@ public class Money {
     public UUID getId() { return id; }
 
     public String getNazwa() { return nazwa; }
-
     public void setNazwa(String nazwa) { this.nazwa = nazwa; }
 
     public String getKwotaDoZaplaty() { return KwotaDoZaplaty; }
-
     public void setKwotaDoZaplaty(String kwotaDoZaplaty) { KwotaDoZaplaty = kwotaDoZaplaty; }
 
     public String getKwotaZaplacona() { return KwotaZaplacona; }
-
     public void setKwotaZaplacona(String kwotaZaplacona) { KwotaZaplacona = kwotaZaplacona; }
 }

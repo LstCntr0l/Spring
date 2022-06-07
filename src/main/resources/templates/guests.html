@@ -91,11 +91,13 @@
             <td th:unless="${guest.osobaTow}"><img src="/images/checkbox-unchecked.jpg" width="30" height="30" alt="unchecked"></td>
             <td><a th:href="${'/guests/delete/'+guest.id}">Delete</a></td>
         </tr>
-        <tr class="table-success">
-            <td> Suma osób: </td>
-            <td th:text="${#lists.size(guests)}"></td>
-            <td> Suma osób towarzyszących: </td>
-            <td th:text="${#lists.size(guests.?[osobaTow == TRUE])}" ></td>
+        <tr class="table-success" >
+            <td></td>
+            <td></td>
+            <td>Suma wszystkich osób</td>
+            <div th:with="result=${#lists.size(guests) + #lists.size(guests.?[osobaTow == TRUE])}">
+                <td th:text="${result}"></td>
+            </div>
         </tr>
         </tbody>
     </table>
@@ -142,7 +144,6 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
                     <input type="submit" class="btn btn-primary" value="Dodaj"/>
                 </div>
-
             </div>
         </div>
     </div>

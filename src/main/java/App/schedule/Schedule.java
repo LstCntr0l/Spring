@@ -18,8 +18,7 @@ public class Schedule {
 
     Boolean done;
 
-    public Schedule() {
-    }
+    public Schedule() { }
 
     public Schedule( String tittle, String name, Boolean done) {
         this.tittle = tittle;
@@ -34,31 +33,17 @@ public class Schedule {
         this.done = done;
     }
 
-    public UUID getId() {
-        return id;
-    }
+    public UUID getId() { return id; }
 
-    public String getTittle() {
-        return tittle;
-    }
+    public String getTittle() { return tittle; }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
-    }
+    public void setTittle(String tittle) { this.tittle = tittle; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public Boolean getDone() {
-        return done;
-    }
+    public Boolean getDone() { return done; }
 
-    public void setDone(Boolean done) {
-        this.done = done;
-    }
+    public void setDone(Boolean done) { this.done = done; }
 }

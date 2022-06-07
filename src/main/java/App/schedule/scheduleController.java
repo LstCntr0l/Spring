@@ -48,11 +48,11 @@ public class scheduleController {
                 .toList();
 
         Map<UUID, Schedule> existingEntires = updatedEntries.stream()
-                .map(Schedules.Schedule.Entry::getId)
+                .map(entry -> entry.getId())
                 .map(UUID::fromString)
                 .collect(Collectors.collectingAndThen(
                         Collectors.toList(),
-                        scheduleRepository::findAllById
+                        (List<UUID> ids) -> scheduleRepository.findAllById(ids)
                 ))
                 .stream()
                 .collect(Collectors.toMap(Schedule::getId, Function.identity()));

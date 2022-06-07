@@ -11,11 +11,9 @@ public class Schedules {
     public Schedules(List<Schedule> groups) {
         this.groups = groups;
     }
-
     public List<Schedule> getGroups() {
         return groups;
     }
-
     public void setGroups(List<Schedule> groups) {
         this.groups = groups;
     }
@@ -37,23 +35,18 @@ public class Schedules {
         public String getTitle() {
             return title;
         }
-
         public void setTitle(String title) {
             this.title = title;
         }
-
         public List<Schedule.Entry> getEntries() {
             return entries;
         }
-
         public void setEntries(List<Schedule.Entry> entries) {
             this.entries = entries;
         }
-
         public String getCollapseId() {
             return collapseId;
         }
-
         public void setCollapseId(String collapseId) {
             this.collapseId = collapseId;
         }
@@ -75,7 +68,6 @@ public class Schedules {
             public String getId() {
                 return id;
             }
-
             public void setId(String id) {
                 this.id = id;
             }
@@ -83,7 +75,6 @@ public class Schedules {
             public String getName() {
                 return name;
             }
-
             public void setName(String name) {
                 this.name = name;
             }
@@ -91,7 +82,6 @@ public class Schedules {
             public Boolean getDone() {
                 return done;
             }
-
             public void setDone(Boolean done) {
                 this.done = done;
             }

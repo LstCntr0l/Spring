@@ -14,7 +14,6 @@ import java.util.UUID;
 public class MoneyController {
     private MoneyService moneyService;
 
-
     @Autowired
     public void setMoneyController(MoneyService moneyService) {
         this.moneyService = moneyService;

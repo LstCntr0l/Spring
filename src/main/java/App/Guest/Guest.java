@@ -19,9 +19,6 @@ public class Guest {
     @NotBlank
     String nazwisko;
 
-    @Version
-    Long version;
-
     Boolean osobaTow;
 
     public Guest() {
@@ -36,7 +33,6 @@ public class Guest {
     public Boolean getOsobaTow() {
         return osobaTow;
     }
-
     public void setOsobaTow(Boolean osobaTow) {
         this.osobaTow = osobaTow;
     }
@@ -48,7 +44,6 @@ public class Guest {
     public String getImie() {
         return imie;
     }
-
     public void setImie(String imie) {
         this.imie = imie;
     }
@@ -56,7 +51,6 @@ public class Guest {
     public String getNazwisko() {
         return nazwisko;
     }
-
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
     }
